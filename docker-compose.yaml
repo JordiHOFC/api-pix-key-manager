@@ -1,0 +1,19 @@
+version: '3'
+services:
+  bcb:
+    image: "public.ecr.aws/d8b2x5c9/orange-stack-sat-bcb-pix"
+    ports:
+      - 8082:8082
+  erp-itau:
+    image: "public.ecr.aws/d8b2x5c9/orange-stack-sat-itau-erp"
+    ports:
+      - 9091:9091
+  postgres:
+    image: 'postgres:alpine'
+    volumes:
+      -  ./sql/create_schema.sql:/docker-entrypoint-initdb.d/create_schema.sql
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pix
