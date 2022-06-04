@@ -24,7 +24,6 @@ public class CadastraChaveRequest {
     @NotBlank
     private String conta;
 
-
     @NotNull
     private UUID idCliente;
 
